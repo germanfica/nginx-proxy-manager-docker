@@ -1,12 +1,12 @@
 version: '3'
 services:
-  app:
+  ngnix:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
-      - '6076:80'  # Redirigir tráfico HTTP del puerto 6076 en el host al 80 del contenedor
-      - '6081:81'  # Cambiar el puerto del panel de administración
-      - '6443:443' # Opcional: Cambiar el puerto HTTPS si es necesario
+      - '80:80'
+      - '81:81' # Panel de administración
+      - '443:443'
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
